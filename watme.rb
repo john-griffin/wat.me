@@ -8,6 +8,7 @@ def agent
 end
 
 get '/random' do
+  content_type :json
   doc = agent.get('http://knowyourmeme.com/memes/wat/photos').parser
   {"wat" => doc.css("a.photo img").map{|img| img["src"]}.sample}.to_json
 end
