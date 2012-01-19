@@ -9,6 +9,7 @@ GEM
       rest-client (~> 1.6.1)
       rubyzip
       term-ansicolor (~> 1.0.5)
+    json (1.6.5)
     launchy (2.0.5)
       addressable (~> 2.2.6)
     mechanize (2.1)
@@ -48,6 +49,7 @@ PLATFORMS
 
 DEPENDENCIES
   heroku
+  json
   mechanize
   shotgun
   sinatra

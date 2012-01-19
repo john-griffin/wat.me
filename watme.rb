@@ -1,7 +1,6 @@
-require 'rubygems'
-require 'sinatra'
-require 'mechanize'
-require 'json'
+require "rubygems"
+require "bundler/setup"
+Bundler.require(:default)
 
 def wats
   agent = Mechanize.new
