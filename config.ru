@@ -1,0 +1,2 @@
+require './watme'
+run Watme
