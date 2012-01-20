@@ -3,9 +3,12 @@ require "bundler/setup"
 Bundler.require(:default)
 
 def wats
-  agent = Mechanize.new
-  doc = agent.get('http://knowyourmeme.com/memes/wat/photos?sort=score').parser
-  doc.css("a.photo:not(.left) img").map{|img| {"wat" => img["src"].gsub("masonry", "newsfeed")}}
+  connection = Faraday.new(:url => 'http://knowyourmeme.com/memes/wat/photos?sort=score') do |builder|
+    builder.use FaradayStack::ResponseHTML
+    builder.adapter Faraday.default_adapter
+  end
+  response = connection.get
+  response.body.css("a.photo:not(.left) img").map{|img| {"wat" => img["src"].gsub("masonry", "newsfeed")}}
 end
 
 get '/' do
