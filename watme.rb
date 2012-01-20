@@ -16,13 +16,15 @@ class Watme < Sinatra::Base
     response.body.css("a.photo:not(.left) img").map{|img| {"wat" => img["src"].gsub("masonry", "newsfeed")}}
   end
 
-  get '/' do
+  before do
     content_type :json
+  end
+
+  get '/' do
     wats.to_json
   end
 
   get '/random' do
-    content_type :json
     wats.sample.to_json
   end
 end
